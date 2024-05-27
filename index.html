@@ -1,14 +1,213 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraspBalance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 120px; /* 留出footer的空间 */
+        }
+        header {
+            background-color: #404040;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            font-family: "Times New Roman", Times, serif;
+        }
+        header h1{
+            font-size: 34px;
+            margin-bottom: 15px;
+
+        }
+        header p{
+            padding: 15px;
+            text-align: justify;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        header h2{
+            font-size: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+        }
+        header h3{
+            font-size: 18px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+        }
+        header a{
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+
+        }
+
+        header p{
+            margin-left: 70px; /* 设置容器与页面左侧的距离为10px */
+            margin-right: 70px; /* 设置容器与页面右侧的距离为10px */
+            padding-left: 125px; /* 添加内边距以增加容器内容与边界的距离 */
+            padding-right: 125px; /* 添加内边距以增加容器内容与边界的距离 */
+            font-weight: bold; /* 添加加粗效果 */
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 30px; /* 自定义视频标题的字体大小 */
+            color: #7F1146; /* 自定义视频标题的颜色 */
+            font-weight: bold; /* 添加加粗效果 */
+        }
+        .ppp {
+            text-align: justify; /* 两端对齐 */
+            margin-bottom: 15px; /* 调整视频介绍的下边距 */
+            font-size: 17px; /* 自定义视频介绍的字体大小 */
+            color: #555; /* 自定义视频介绍的颜色 */
+            font-weight: bold; /* 添加加粗效果 */
+            margin-left: 70px; /* 设置容器与页面左侧的距离为10px */
+            margin-right: 70px; /* 设置容器与页面右侧的距离为10px */
+            padding-left: 120px; /* 添加内边距以增加容器内容与边界的距离 */
+            padding-right: 120px; /* 添加内边距以增加容器内容与边界的距离 */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .video-container {
+            margin-bottom: 90px; /* 减小视频容器之间的间距 */
+            text-align: center;
+        }
+        .video-container h3 {
+            margin-top: 0;
+            margin-top: 0px;
+            font-size: 24px; /* 自定义视频标题的字体大小 */
+            color: black; /* 自定义视频标题的颜色 */
+        }
+        .video-container p {
+            margin-top: 0px; /* 调整视频介绍的上边距 */
+            margin-bottom: 15px; /* 调整视频介绍的下边距 */
+            font-size: 20px; /* 自定义视频介绍的字体大小 */
+            color: #555; /* 自定义视频介绍的颜色 */
+            font-weight: bold; /* 添加加粗效果 */
+            margin-left: 70px; /* 设置容器与页面左侧的距离为10px */
+            margin-right: 70px; /* 设置容器与页面右侧的距离为10px */
+            padding-left: 330px; /* 添加内边距以增加容器内容与边界的距离 */
+            padding-right: 330px; /* 添加内边距以增加容器内容与边界的距离 */
+        }
+        .video-container1{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 创建两列 */
+            gap: 0px; /* 设置间隙为20像素 */
+            margin-left: 20px; /* 将整个视频容器向左偏移10px */
+            margin-bottom: 50px; /* 将整个视频容器向左偏移10px */
+        }
+        video {
+            max-width: 100%; /* 视频最大宽度为容器宽度 */
+        }
+        .responsive-image {
+            width: 80%; /* 图像宽度为页面宽度的80% */
+            height: auto; /* 高度自适应 */
+            display: block; /* 让图像居中显示 */
+            margin: 0 auto; /* 水平居中 */
+        }
+        .isolated-video {
+            width: 30%; /* 图像宽度为页面宽度的80% */
+            height: auto; /* 高度自适应 */
+        }
+    </style>
 </head>
 <body>
-  <video controls autoplay>
-    <source src="video1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+<header>
+    <h1>GraspBalance: 7-DoF Grasp Pose Detection with Multi-scale Objects Balanced in Cluttered Scenes</h1>
+    <h2><em>Haiyuan Gui, Shanchen Pang*, Xiao He, Xue Zhai, Nuanlai Wang, Wenjing Yin, Sibo Qiao, Kuijie Zhang</em></h2>
+    <h3><em>China University of Petroleum (East China), Qingdao 266580, China</em></h3>
+    <a href="https://github.com/upc-ghy/GraspBalance">Code</a>
+    <p>Object grasping constitutes a fundamental function in robotics. Currently, existing algorithms predominantly focus on enhancing the adaptability of robots in unstructured environments by optimizing the overall accuracy of grasp pose detection. However, they overlook the imbalance in the difficulty of grasp pose detection for objects of different scales. This paper introduces a multi-scale objects 7-DoF grasp pose balanced detection algorithm to mitigate the significant variance in grasp pose detection across objects of varying scales. Specifically, we introduce a deep residual PointNet++ encoder for extracting depth-integrated global semantic features from scene point cloud. Meanwhile, we design a multi-scale grasp width grouping feature extraction module to acquire multi-scale local geometric feature under different receptive fields. We fuse global and multi-scale local geometric features to provide a more balanced feature set for grasp pose detection. In addition, we also design a multi-scale weight balanced loss function to realize the balanced training of multi-scale objects with different apriori weights. Our algorithm significantly improves the detection accuracy of small-scale objects on the GraspNet-1Billion benchmark, which outperforms the baseline GraspNet by 12.71%, 8.35%, and 7.04% on the seen, similar, and novel test sets, respectively. On the real Franka Emika 7-axis robot, our algorithm has achieved a 91.79% success rate in grasping multi-scale unseen objects in cluttered scenes.</p>
+</header>
+<section>
+    <h2>Multi-scale Objects 7-DoF Grasp Pose Balanced Detection Algorithm</h2>
+    <div class="ppp">To mitigate the significant variance in grasp pose detection across objects of varying scales, we propose a multi-scale objects 7-DoF grasp pose balanced detection algorithm (GraspBalance) to achieve balanced grasp pose detection for objects at different scales. In terms of feature extraction, we learn both global and local features from the point cloud of cluttered scenes. To enhance the learning of global features, we design a deep residual PointNet++ encoder (DRP). This point cloud encoder implements the learning of fused shallow and deep global features through the plug-and-play Residual SetAbstraction module (Res SA). Additionally, we design a multi-scale grasp width grouping feature extraction module (MsFE) to learn the local geometric features. By capturing multi-scale local geometric features at different grasp receptive fields, we balance the feature representation for objects at different scales. Fusing global and multi-scale local geometric features provides a more comprehensive and rich point cloud representation for grasp pose detection. In terms of the imbalanced proportion of objects at different scales, considering the relationship between object size and the corresponding grasp width of the two-finger parallel gripper, we reframe the challenge of imbalanced scale proportions during grasp pose detection as an imbalance in grasp widths. To tackle this, we propose a multi-scale weight balance loss function that assigns varying weights to grasp poses at different scales. Increasing the gradients for low-proportion grasp poses and achieving balanced training of multi-scale objects.</div>
+    <img src="grasp pose detection.png" alt="Grasp Pose Detection Model" class="responsive-image">
+</section>
+
+<section>
+    <h2>Real Robot Grasp Experiments</h2>
+    <div class="video-container">
+        <h3>Experimental Setup For Visual Servoing Franka Robot Grasping</h3>
+        <div class="ppp">To validate the effectiveness of our GraspBalance algorithm in detecting grasp poses of multi-scale objects in real-world settings, we set up a grasping experiment environment using a Franka Emika 7-axis robot and an Intel RealSense D435i stereo depth camera, as shown in the figure below. We deploy our trained GraspBalance network model on a PC (Nvidia RTX 3090, Intel(R) i7-10700 CPU @ 2.90GHz) for inference testing. To verify the generality of our algorithm, all objects used in the real-world experiments are novel, and the GraspBalance model has not seen them during training. Figure (a) is the real-world robot experimental setup, showcasing the objects used in our experiments placed on the platform. Figure (b) showcases various experimental scenarios we designed, including cluttered scenes with objects of small, medium, and large scales.</div>
+        <img src="real robot experiment setup.png" alt="Grasp Pose Detection Model" class="responsive-image">
+    </div>
+    <div class="video-container">
+        <h3>Franka Robot Grasping For Isolated Scenes</h3>
+        <p> We randomly selected one object from each of the three scales (small, medium, and large) of object collections for visualization of robot grasping.</p>
+        <div class="video-container1">
+            <video controls autoplay width="580" height="430">
+                <source src="视频2的链接" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls autoplay width="580" height="430">
+                <source src="视频2的链接" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls autoplay width="580" height="430">
+                <source src="视频2的链接" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <h3>Franka Robot Grasping For Cluttered Scene (Small) </h3>
+        <p>Real robot grasping in cluttered scenes consisting exclusively of small-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
+        <video controls autoplay width="720" height="480">
+            <source src="视频2的链接" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-container">
+        <h3>Franka Robot Grasping For Cluttered Scene (Medium)</h3>
+        <p>Real robot grasping in cluttered scenes consisting exclusively of medium-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
+        <video controls autoplay width="720" height="480">
+            <source src="视频2的链接" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-container">
+        <h3>Franka Robot Grasping For Cluttered Scene (Large)</h3>
+        <p>Real robot grasping in cluttered scenes consisting exclusively of large-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
+        <video controls autoplay width="720" height="480">
+            <source src="视频2的链接" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-container">
+        <h3>Franka Robot Grasping For Cluttered Scene (Mixed)</h3>
+        <p>Real robot grasping in cluttered scenes involving objects of all scales. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
+        <video controls autoplay width="720" height="480">
+            <source src="视频2的链接" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- 可以根据需要添加更多的视频 -->
+</section>
+<footer>
+    <p>&copy; Haiyuan Gui (email: guihaiyuan736570@gmail.com), Shanchen Pang* (email: pangsc@upc.edu.cn), Xiao He (email: xiao_he2022@126.com), et al.</p>
+    <p>China University of Petroleum (East China)</p>
+</footer>
 </body>
 </html>
