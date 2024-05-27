@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GraspBalance</title>
+    <title>个人网页</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,25 +116,42 @@
             margin-left: 20px; /* 将整个视频容器向左偏移10px */
             margin-bottom: 50px; /* 将整个视频容器向左偏移10px */
         }
-        video {
-            max-width: 100%; /* 视频最大宽度为容器宽度 */
-        }
         .responsive-image {
             width: 80%; /* 图像宽度为页面宽度的80% */
             height: auto; /* 高度自适应 */
             display: block; /* 让图像居中显示 */
             margin: 0 auto; /* 水平居中 */
         }
-        .isolated-video {
-            width: 30%; /* 图像宽度为页面宽度的80% */
-            height: auto; /* 高度自适应 */
+        .flex-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .flex-item {
+            margin-right: 10px; /* 设置每个组件之间的间距 */
+            flex: 1
+        }
+
+        /* 最后一个组件不添加右边距 */
+        .flex-item:last-child {
+            margin-right: 0;
+        }
+        video{
+            max-width: 100%; /* 视频最大宽度为容器宽度 */
+            /*width: 100%; !* 设置视频的宽度为100%，让它随着父容器的大小自动调整 *!*/
+            height: auto; /* 让高度根据宽度的变化而自动调整，以保持视频的原始宽高比 */
+        }
+        .video1{
+            width: 100%; /* 设置视频的宽度为100%，让它随着父容器的大小自动调整 */
+            height: auto; /* 让高度根据宽度的变化而自动调整，以保持视频的原始宽高比 */
         }
     </style>
 </head>
 <body>
 <header>
     <h1>GraspBalance: 7-DoF Grasp Pose Detection with Multi-scale Objects Balanced in Cluttered Scenes</h1>
-    <h2><em>Haiyuan Gui, Shanchen Pang*, Xiao He, Xue Zhai, Nuanlai Wang, Wenjing Yin, Sibo Qiao, Kuijie Zhang</em></h2>
+    <!-- <h2><em>Haiyuan Gui, Shanchen Pang*, Xiao He, Xue Zhai, Nuanlai Wang, Wenjing Yin, Sibo Qiao, Kuijie Zhang</em></h2> -->
+    <h2><em>Haiyuan Gui, Shanchen Pang*, Xiao He, Nuanlai Wang, Wenjing Yin, Sibo Qiao, Kuijie Zhang</em></h2>
     <h3><em>China University of Petroleum (East China), Qingdao 266580, China</em></h3>
     <a href="https://github.com/upc-ghy/GraspBalance">Code</a>
     <p>Object grasping constitutes a fundamental function in robotics. Currently, existing algorithms predominantly focus on enhancing the adaptability of robots in unstructured environments by optimizing the overall accuracy of grasp pose detection. However, they overlook the imbalance in the difficulty of grasp pose detection for objects of different scales. This paper introduces a multi-scale objects 7-DoF grasp pose balanced detection algorithm to mitigate the significant variance in grasp pose detection across objects of varying scales. Specifically, we introduce a deep residual PointNet++ encoder for extracting depth-integrated global semantic features from scene point cloud. Meanwhile, we design a multi-scale grasp width grouping feature extraction module to acquire multi-scale local geometric feature under different receptive fields. We fuse global and multi-scale local geometric features to provide a more balanced feature set for grasp pose detection. In addition, we also design a multi-scale weight balanced loss function to realize the balanced training of multi-scale objects with different apriori weights. Our algorithm significantly improves the detection accuracy of small-scale objects on the GraspNet-1Billion benchmark, which outperforms the baseline GraspNet by 12.71%, 8.35%, and 7.04% on the seen, similar, and novel test sets, respectively. On the real Franka Emika 7-axis robot, our algorithm has achieved a 91.79% success rate in grasping multi-scale unseen objects in cluttered scenes.</p>
@@ -155,19 +172,28 @@
     <div class="video-container">
         <h3>Franka Robot Grasping For Isolated Scenes</h3>
         <p> We randomly selected one object from each of the three scales (small, medium, and large) of object collections for visualization of robot grasping.</p>
-        <div class="video-container1">
-            <video controls autoplay width="580" height="430">
-                <source src="视频2的链接" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <video controls autoplay width="580" height="430">
-                <source src="视频2的链接" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <video controls autoplay width="580" height="430">
-                <source src="视频2的链接" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+<!--        <div class="video-container1">-->
+            <div class="flex-container">
+                <div class="flex-item" >
+                    <video controls autoplay class="video1" height="430">
+                        <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="flex-item">
+                    <video controls autoplay class="video1" height="430">
+                        <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="flex-item">
+                    <video controls autoplay class="video1" height="430">
+                        <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+<!--            </div>-->
         </div>
     </div>
 
@@ -175,7 +201,7 @@
         <h3>Franka Robot Grasping For Cluttered Scene (Small) </h3>
         <p>Real robot grasping in cluttered scenes consisting exclusively of small-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
         <video controls autoplay width="720" height="480">
-            <source src="视频2的链接" type="video/mp4">
+            <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video4.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -183,7 +209,7 @@
         <h3>Franka Robot Grasping For Cluttered Scene (Medium)</h3>
         <p>Real robot grasping in cluttered scenes consisting exclusively of medium-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
         <video controls autoplay width="720" height="480">
-            <source src="视频2的链接" type="video/mp4">
+            <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video5.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -191,7 +217,7 @@
         <h3>Franka Robot Grasping For Cluttered Scene (Large)</h3>
         <p>Real robot grasping in cluttered scenes consisting exclusively of large-scale objects. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
         <video controls autoplay width="720" height="480">
-            <source src="视频2的链接" type="video/mp4">
+            <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video6.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -199,11 +225,10 @@
         <h3>Franka Robot Grasping For Cluttered Scene (Mixed)</h3>
         <p>Real robot grasping in cluttered scenes involving objects of all scales. We randomly selected several small-scale objects placed within the robot's grasping range and visualized the grasping process.</p>
         <video controls autoplay width="720" height="480">
-            <source src="视频2的链接" type="video/mp4">
+            <source src="https://media.githubusercontent.com/media/upc-ghy/Franka-Grasp/GraspBalance/video7.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    <!-- 可以根据需要添加更多的视频 -->
 </section>
 <footer>
     <p>&copy; Haiyuan Gui (email: guihaiyuan736570@gmail.com), Shanchen Pang* (email: pangsc@upc.edu.cn), Xiao He (email: xiao_he2022@126.com), et al.</p>
